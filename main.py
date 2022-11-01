@@ -20,7 +20,7 @@ spotPrices.find_spot_price_by_hour()
 
 
 easeeCharger = EaseeCharger.EaseeCharger(EASEE_SITE_ID)
-easeeCharger.set_bearer_token(EASEE_BEARER_TOKEN)
+easeeCharger.create_access_token_if_expired()
 easeeCharger.set_price_currency_id(EASEE_CURRENCY_ID)
 easeeCharger.set_current_price(spotPrices.get_current_hour_spot_price())
 easeeCharger.set_easee_charging_price()
