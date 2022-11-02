@@ -25,7 +25,7 @@ class EaseeCharger:
             "currencyId": self.get_price_currency_id(),
             "costPerKWh": self.get_current_price(),
         }
-        
+
         request = requests.post("https://api.easee.cloud/api/sites/"+self.get_site_id()+"/price", headers=headers, json=data)
 
         if(request.status_code != 200):
@@ -34,7 +34,7 @@ class EaseeCharger:
     def create_access_token_if_expired(self):
         config = self.get_config_details();
 
-        current_time = moment.now().locale("Europe/Oslo").format("YYYY-M-D H")
+        current_time = moment.now().locale("Europe/Oslo").add(hours=1).format("YYYY-M-D H")
         expires_time = config['expires'];
         if(expires_time <= current_time):
             self.request_new_bearer_token()
