@@ -2,6 +2,7 @@ import requests
 import pickle
 import moment
 import sys
+import os
 
 class EaseeCharger:
 
@@ -83,8 +84,13 @@ class EaseeCharger:
         self.__price_currency_id = priceCurrencyId
     
     def get_config_details(self):
-        file = open('config.py', 'rb')
-        data = pickle.load(file)
+        script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        rel_path = "config.py"
+        abs_file_path = os.path.join(script_dir, rel_path)
+
+        with open(abs_file_path, 'rb') as pickle_file:
+            data = pickle.load(pickle_file)
+
         return data;
 
     def set_config_details(self, bearerToken, refreshToken, expiresIn):
