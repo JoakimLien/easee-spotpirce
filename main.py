@@ -1,7 +1,7 @@
 from classes import SpotPrices
 from classes import EaseeCharger
 from dotenv import load_dotenv
-import os;
+import os
 
 load_dotenv()
 

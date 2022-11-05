@@ -1,5 +1,6 @@
 import requests
 import moment
+import sys
 
 class SpotPrices:
     __spot_price_area = None

@@ -1,6 +1,7 @@
 import requests
 import pickle
 import moment
+import sys
 
 class EaseeCharger:
 
@@ -30,6 +31,8 @@ class EaseeCharger:
 
         if(request.status_code != 200):
             sys.exit('Something went wrong when setting the current price to easee charger')
+
+        print("Charger with site id " + self.get_site_id() + " with current price of: " + str(self.get_current_price()))
 
     def create_access_token_if_expired(self):
         config = self.get_config_details();
